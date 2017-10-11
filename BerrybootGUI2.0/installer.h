@@ -34,7 +34,7 @@
 #include <QFile>
 
 #define BERRYBOOT_VERSION  "v2.901"
-#define SIZE_BOOT_PART  /* 63 */ 127
+#define SIZE_BOOT_PART  /* 63 */ 256
 
 class QSettings;
 

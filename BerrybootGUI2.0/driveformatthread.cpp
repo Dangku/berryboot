@@ -273,10 +273,10 @@ bool DriveFormatThread::partitionDrive()
 {
     QByteArray partitionTable;
     int size_boot_part_in_sectors = 2048 * SIZE_BOOT_PART;
-    int start_main_part = size_boot_part_in_sectors + 2048;
+    int start_main_part = size_boot_part_in_sectors + 204800;
 
     //if (_reformatBoot)
-        partitionTable = "2048,"+QByteArray::number(size_boot_part_in_sectors)+",0E\n"; /* FAT partition LBA */
+        partitionTable = "204800,"+QByteArray::number(size_boot_part_in_sectors)+",0E\n"; /* FAT partition LBA */
 
     partitionTable += QByteArray::number(start_main_part)+",,L\n"; /* Linux partition with all remaining space */
     partitionTable += "0,0\n";
