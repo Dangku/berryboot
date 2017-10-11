@@ -125,6 +125,18 @@ void BootMenuDialog::initialize()
     qpd.setLabelText(tr("Mounting data partition %1").arg(QString(datadev)));
     QApplication::processEvents();
 
+    /* bpi, datadev partition force fsck */
+#if 1
+     qDebug() << "start fsck";
+     QProcess proc;
+     _i->switchConsole(5);
+     proc.start(QByteArray("openvt -c 5 -w /usr/sbin/fsck.ext4 -yf /dev/"+datadev));
+     QApplication::processEvents();
+     proc.waitForFinished(-1);
+     _i->switchConsole(1);
+     qDebug() << "end fsck";
+#endif
+
     if (_i->bootoptions().contains("luks"))
     {
         askLuksPassword(datadev);
